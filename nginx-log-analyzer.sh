@@ -1,5 +1,10 @@
 #!/bin/bash
-log="nginx-access.log" # Set your Nginx log file here
+
+if [ ! -f "$1" ]; then
+    echo "The logfile was not specified or does not exist"
+    exit 1
+fi
+log="$1"
 echo "Top 5 IP addresses with the most requests:"
 grep -E -o "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" "$log" | sort | uniq -c | sort -nr | head -n 5 | awk '{print "From address " $2 " - " $1 " requests"}'
 echo -e "\nTop 5 most requested paths:"
