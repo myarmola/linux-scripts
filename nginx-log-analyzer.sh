@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -f "$1" ]; then
-    echo "The logfile was not specified or does not exist"
+    echo "The Nginx logfile was not specified or does not exist"
     exit 1
 fi
 log="$1"
